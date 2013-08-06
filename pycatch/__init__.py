@@ -9,10 +9,16 @@ def _info(type, value, tb):
         # device, so we call the default hook
         sys.__excepthook__(type, value, tb)
     else:
-        import traceback, pdb
+        import traceback, pdb, platform, os
+        
+        # if we're on Mac OS X, make the beep noise and alert the system:
+        if platform.system() == "Darwin":
+            os.system("tput bel")
+            
         # we are NOT in interactive mode, print the exception...
         traceback.print_exception(type, value, tb)
         print
+        
         # ...then start the debugger in post-mortem mode.
         pdb.pm()
 
