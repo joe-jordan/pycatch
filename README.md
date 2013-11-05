@@ -20,6 +20,12 @@ import pycatch
 pycatch.enable()
 # or, if you want a warning if it's not actually active:
 pycatch.enable(warn=True)
+
+# ipdb mode (requires ipython to be installed):
+pycatch.enable(ipython=True)
 ```
+
+
+note, as of 1.1, you can now use the iPython debugger (which has tab completion and a bunch of other things) by using the flag in the call to enable.
 
 (pycatch doesn't actually do anything if you're in an interactive session, since an exception wouldn't normally kill the process.)
